@@ -14,7 +14,7 @@ Plug('nvim-tree/nvim-tree.lua')
 Plug('neovim/nvim-lspconfig')
 Plug('hrsh7th/nvim-cmp')
 Plug('hrsh7th/cmp-nvim-lsp')
-Plug('nvim-treesitter/nvim-treesitter', { do = ':TSUpdate' })
+Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
 Plug('windwp/nvim-autopairs')
 Plug('numToStr/comment.nvim')
 
