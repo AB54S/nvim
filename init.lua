@@ -6,8 +6,23 @@
 -- VIM-PLUG SETUP & PLUGINS
 -- ============================================================================
 
+local plug_path = vim.fn.stdpath('data') .. '/site/autoload/plug.vim'
+if vim.fn.empty(vim.fn.glob(plug_path)) > 0 then
+  vim.fn.system({
+    'sh',
+    '-c',
+    string.format(
+      'curl -fLo %q --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim',
+      plug_path
+    ),
+  })
+end
+
+vim.cmd('source ' .. vim.fn.fnameescape(plug_path))
+
+local plug_dir = vim.fn.stdpath('data') .. '/plugged'
 local Plug = vim.fn['plug#']
-vim.call('plug#begin')
+vim.fn['plug#begin'](plug_dir)
 
 Plug('catppuccin/nvim', { as = 'catppuccin' })
 Plug('nvim-tree/nvim-tree.lua')
@@ -18,7 +33,7 @@ Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
 Plug('windwp/nvim-autopairs')
 Plug('numToStr/comment.nvim')
 
-vim.call('plug#end')
+vim.fn['plug#end']()
 
 -- ============================================================================
 -- CORE SETTINGS
@@ -48,15 +63,18 @@ opt.timeoutlen = 300
 -- ============================================================================
 
 -- COLORSCHEME
-vim.cmd('colorscheme catppuccin-mocha')
+pcall(vim.cmd, 'colorscheme catppuccin-mocha')
 
 -- NVIM-TREE
-require('nvim-tree').setup({
-  view = {
-    width = 30,
-    side = 'right',
-  },
-})
+local nvim_tree_ok, nvim_tree = pcall(require, 'nvim-tree')
+if nvim_tree_ok then
+  nvim_tree.setup({
+    view = {
+      width = 30,
+      side = 'right',
+    },
+  })
+end
 
 -- COMMENT.NVIM
 local comment_ok, comment = pcall(require, 'Comment')
