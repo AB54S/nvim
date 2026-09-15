@@ -918,8 +918,7 @@ keymap("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv"
 -- Save file
 keymap({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 
--- Markdown render toggle (Cmd+Shift+V via Ghostty keybind, see ~/.config/ghostty/config)
-keymap({ "n", "i" }, "<D-V>", "<cmd>RenderMarkdown toggle<cr>", { desc = "Toggle Markdown Render" })
+-- Markdown render toggle
 keymap("n", "<leader>um", "<cmd>RenderMarkdown toggle<cr>", { desc = "Toggle Markdown Render" })
 
 -- Save / quit

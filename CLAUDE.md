@@ -83,7 +83,7 @@ This is a Neovim configuration (`~/.config/nvim`). It uses **lazy.nvim** as the 
 - `<leader>e` → file explorer
 - `<leader>ff` → find files, `<leader>/` → grep
 - `<c-/>` → toggle terminal
-- `Cmd+Shift+V` / `<leader>um` → toggle markdown render (raw ↔ rendered). Markdown renders on by default; requires the Ghostty `keybind` in `~/.config/ghostty/config` to forward Cmd+Shift+V (default binding is paste).
+- `<leader>um` → toggle markdown render (raw ↔ rendered). Markdown renders on by default.
 
 ## LSP Setup
 
